@@ -31,8 +31,10 @@ public class ClienteController {
     @GetMapping("/{id}")
     public Cliente buscarPorId(@PathVariable Long id) {
         return clienteRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Cliente não encontrado: " + id));
+                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.NOT_FOUND,
+                        "Cliente não encontrado"
+                ));
     }
 
     @DeleteMapping("/{id}")

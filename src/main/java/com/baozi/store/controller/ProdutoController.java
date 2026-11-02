@@ -31,8 +31,10 @@ public class ProdutoController {
     @GetMapping("/{id}")
     public Produto buscarPorId(@PathVariable Long id) {
         return produtoRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Produto não encontrado: " + id));
+                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.NOT_FOUND,
+                        "Produto não encontrado"
+                ));
     }
 
     @DeleteMapping("/{id}")
