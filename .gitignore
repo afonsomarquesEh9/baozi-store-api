@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Configurações locais do banco de dados
+src/main/resources/application.properties
